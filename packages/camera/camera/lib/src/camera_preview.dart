@@ -11,13 +11,14 @@ import '../camera.dart';
 /// A widget showing a live camera preview.
 class CameraPreview extends StatelessWidget {
   /// Creates a preview widget for the given camera controller.
-  const CameraPreview(this.controller, {super.key, this.child});
+  const CameraPreview(this.controller, {super.key, this.child,this.blocRotation});
 
   /// The controller for the camera that the preview is shown for.
   final CameraController controller;
 
   /// A widget to overlay on top of the camera preview
   final Widget? child;
+  final bool? blocRotation;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,9 @@ class CameraPreview extends StatelessWidget {
   Widget _wrapInRotatedBox({required Widget child}) {
     if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) {
       return child;
+    }
+    if(blocRotation ?? false){
+    return child;
     }
 
     return RotatedBox(
