@@ -59,6 +59,11 @@ class CameraPreview extends StatelessWidget {
   }
 
   bool _isLandscape() {
+if(blocRotation?? false){
+  return false;
+}
+
+    
     return <DeviceOrientation>[
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight
